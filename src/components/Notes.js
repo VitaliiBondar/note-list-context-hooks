@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export const Notes = ({notes, onDelete, onUpdate, onOpen}) => (
+export const Notes = ({notes, onDelete, onSelect}) => (
     <div>
         <ul className="list-group">
             {notes.length ? notes.map(note => (
@@ -28,12 +28,12 @@ export const Notes = ({notes, onDelete, onUpdate, onOpen}) => (
                                             d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                                     </svg>
                                 </div> : <div></div>}
-                            <div className="d-flex justify-content-end">
-                                <Link to="/create-note">
+                            <div className="d-flex justify-content-end note-btn">
+                                <Link to="/update-note">
                                     <button
                                         type='button'
                                         className="btn btn-warning btn-sm"
-                                        onClick={() => onOpen(note.id)}
+                                        onClick={() => onSelect(note.id)}
                                     >Update
                                     </button>
                                 </Link>
@@ -41,7 +41,7 @@ export const Notes = ({notes, onDelete, onUpdate, onOpen}) => (
                                     <button
                                         type='button'
                                         className="btn btn-info btn-sm"
-                                        onClick={() => onOpen(note.id)}
+                                        onClick={() => onSelect(note.id)}
                                     >Info
                                     </button>
                                 </Link>

@@ -8,10 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 .note{
   display: flex;
   justify-content: space-between;
@@ -21,11 +17,14 @@ code {
   width: 100%;
   margin-bottom: 5px;
 }
-button{
+.note-btn button{
   margin-right: 10px;
 }
 .create-note input{
   margin-bottom: 8px;
+}
+.create-note button{
+  margin-top: 8px;
 }
 .card-item {
   margin-bottom: 5px;

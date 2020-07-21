@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {FirebaseContext} from "../context/firebase/firebaseContext";
 
 export const CommentForm = (props) => {
-    const firebase = useContext(FirebaseContext)
+    const {addComment, selectedNote} = useContext(FirebaseContext)
     const [name, setName] = useState('');
     const [content, setContent] = useState('');
 
@@ -10,7 +10,7 @@ export const CommentForm = (props) => {
         event.preventDefault();
 
         if (name.trim() && content.trim()) {
-            firebase.addComment(firebase.selectedNote, name.trim(), content.trim()).then(() => console.log('ok'))
+            addComment(selectedNote, name.trim(), content.trim()).then(() => console.log('ok'))
         }
         setName('');
         setContent('');

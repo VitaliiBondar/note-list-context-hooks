@@ -5,7 +5,6 @@ import {Loader} from "../components/Loader";
 
 export const Home = () => {
     const {loading, notes, fetchNotes, deleteNote, updateNote, selectedNote, selectNote} = useContext(FirebaseContext)
-    console.log('selected note', selectedNote)
 
     useEffect(() => {
         fetchNotes()
@@ -14,7 +13,7 @@ export const Home = () => {
     return (
         <Fragment>
             {loading ? <Loader/> :
-                <Notes notes={notes} onDelete={deleteNote} onUpdate={updateNote} onOpen={selectNote}/>}
+                <Notes notes={notes} onDelete={deleteNote} onUpdate={updateNote} onSelect={selectNote}/>}
         </Fragment>
     )
 };

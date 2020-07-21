@@ -1,17 +1,17 @@
 import React, {useContext, useState} from "react";
 import {FirebaseContext} from "../context/firebase/firebaseContext";
 
-export const CreateNote = (props) => {
-    const firebase = useContext(FirebaseContext)
-    const [name, setName] = useState(firebase.selectedNote ? firebase.selectedNote.name : '');
-    const [content, setContent] = useState(firebase.selectedNote ? firebase.selectedNote.content : '');
+export const CreateUpdateNote = (props) => {
+    const {selectedNote, updateNote, addNote} = useContext(FirebaseContext)
+    const [name, setName] = useState(selectedNote ? selectedNote.name : '');
+    const [content, setContent] = useState(selectedNote ? selectedNote.content : '');
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (name.trim() && content.trim()) {
-            firebase.selectedNote ? firebase.updateNote(firebase.selectedNote.id, name.trim(), content.trim()).then(() => console.log('ok')) :
-                firebase.addNote(name.trim(), content.trim()).then(() => console.log('ok'))
+           selectedNote ? updateNote(selectedNote.id, name.trim(), content.trim()).then(() => console.log('ok')) :
+                addNote(name.trim(), content.trim()).then(() => console.log('ok'))
             props.history.push('/')
         }
 
@@ -35,7 +35,7 @@ export const CreateNote = (props) => {
                 >{content}</textarea>
                 <div className="d-flex justify-content-end">
                     <button type="submit" className="btn btn-primary btn-sm">
-                        {firebase.selectedNote ? 'UPDATE' : 'ADD'}
+                        {selectedNote ? 'UPDATE' : 'ADD'}
                     </button>
                 </div>
             </div>
